@@ -1,13 +1,34 @@
-import React from 'react';
-import './Cell.css';
+import React from "react";
+import "./Cell.css";
+import { Circle } from "./Circle";
+import { Triangle } from "./Triangle";
+import { Square } from "./Square";
+import { Color, Shape } from "../types";
 
 interface CellProps {
-  // Your code here
+  shape: Shape;
+  color: Color;
+  hidden: boolean;
+  handleClick: () => void;
 }
 
-const Cell: React.FC<CellProps> = (props: CellProps) => {
-  // Render cell with shape and color, use CSS to style based on shape and color.
-  return <></>
+const Cell: React.FC<CellProps> = ({
+  shape,
+  color,
+  hidden,
+  handleClick,
+}: CellProps) => {
+  const shapes = {
+    circle: <Circle color={color} />,
+    triangle: <Triangle color={color} />,
+    square: <Square color={color} />,
+  };
+
+  return hidden ? (
+    <div className="empty-cell" onClick={handleClick}></div>
+  ) : (
+    shapes[shape]
+  );
 };
 
 export default Cell;
