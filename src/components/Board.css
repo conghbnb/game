@@ -10,4 +10,7 @@
   border-radius: 4px;
   border: 2px solid orange;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
